@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- The "circle" element should be inside the "content" section -->
+    <section>
+        <header>
+            <a href="#" class="logo"><img src="logo1.png" alt="Logo"></a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">What's New</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </header>
+        <div class="content">
+            <div class="textBox">
+                <h2>Parent-Student Tracking System MVP Specification <br> It's <span>Here With Us</span></h2>
+                <p>The Parent-Student School Progress Tracking System is a web-based application designed to provide parents with real-time access and information to their child’s general progress. This will include academic progress, school-related news, fee tracking system, and student-related assignments and resources.</p>
+                <a href="#">Learn More</a> <!-- Add a link URL here -->
+            </div>
+            <div class="imgBox">
+                <img src="img4.jpg" alt="Image" class="Starbucks"> <!-- Add "alt" attribute for accessibility -->
+            </div>			
+        </div>
+        <ul class="thumb">
+			<li><img src="img3.jpg" alt="Image 1" onclick="imgSlider('img3.jpg');ChangeCircleColor('')"></li>
+            <li><img src="img1.webp" alt="Image 1" onclick="imgSlider('img1.webp');ChangeCircleColor('')"></li>
+            <li><img src="img2.jpg" alt="Image 2" onclick="imgSlider('img2.jpg');ChangeCircleColor('')"></li>
+            <li><img src="img4.jpg" alt="Image 3" onclick="imgSlider('img4.jpg');ChangeCircleColor('')"></li>
+        </ul>
+        <ul class="sci">
+            <li><a href="https://www.linkedin.com/in/emmanuel-okoth-495885224?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BO2OrsEO2SJifnj8eyUXLNg%3D%3D"><i class="bi bi-linkedin"></i></a></li> <!-- Fixed the nested class issue -->
+            <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+            <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+            <li><a href="https://github.com/emmanuelokoth2002"><i class="bi bi-github"></i></a></li>
+        </ul>
+    </section>
+    <!-- The closing "div" tag for the body was unnecessary -->
+    <script>
+        function imgSlider(anything) {
+            document.querySelector('.Starbucks').src = anything; // Fixed the class name
+        }
+        function ChangeCircleColor(color){
+            const circle = document.querySelector('.circle');
+            circle.style.background = color;
+        }
+    </script>
+</body>
+</html>
