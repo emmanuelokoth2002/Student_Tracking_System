@@ -1,0 +1,35 @@
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "ajax": {
+                "url": "http://localhost:3000/controllers/contactcategoryoperation.php?getcontactcategory=true",
+                "type": "GET",
+                "datatype": "json",
+                "dataSrc": "" // This option is used to tell DataTables where the data array is located in the JSON response
+            },
+            "columns": [{
+                "data": "contactid"
+            }, {
+                "data": "firstname"
+            }, {
+                "data": "categoryname"
+            }]
+        });
+    });
+</script>
+
+
+<body>
+    <!-- Your table in the body section -->
+    <div class="content">
+        <table id="dataTable" class="table">
+            <thead class="thead-white">
+                <tr>
+                    <th scope="col">Contact ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Category Name</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>

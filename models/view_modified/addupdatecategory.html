@@ -1,0 +1,52 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+<div class="card text-center">
+    <div class="card-header bg-danger">
+        Contact details
+    </div>
+    <div class="card-body">
+        <form id="data-form">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault01">Category ID</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="12" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault02">Category name</label>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="family" required>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </form>
+    </div>
+</div>
+
+<div id="message"></div>
+
+<script>
+    $(document).ready(function() {
+        $("#data-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var categoryid = $("#validationDefault01").val();
+            var categoryname = $("#validationDefault02").val();
+
+            // Make an AJAX request
+            $.ajax({
+                url: "http://localhost:3000/controllers/categoryoperation.php", // Replace with your server-side processing script
+                method: "POST",
+                data: {
+                    savecategory: true,
+                    categoryid: categoryid,
+                    categoryname: categoryname
+                },
+                success: function(response) {
+                    $("#message").text(response);
+                }
+            });
+        });
+    });
+</script>

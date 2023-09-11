@@ -1,0 +1,184 @@
+body{
+	font-family: sans-serif;
+	background: url("image.jpg");
+	padding: 0px;
+	margin: 0px;
+	background-size: cover;
+}
+.login{
+	width: 350px;
+	height: 420px;
+	background: #000;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+}
+.user{
+	height: 30%;
+	width: 30%;
+	border-radius: 50%;
+	top: -70px;
+	position: absolute;
+	right: calc(-50px, -70px);
+}
+h1{
+	margin: 0px;
+	padding: 0 0 20px;
+	text-align: center;
+	font-size: 22px;
+}
+.login p{
+	margin: 0px;
+	padding: 0px;
+	font-weight: bold;
+}
+.login input{
+	margin-bottom: 20px;
+	width: 100px;
+}
+.login input[type="text"], input[type="password"]{
+	border: none;
+	border-bottom: 1px solid black;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: white;
+	font-size: 16px;
+	width: 80%;
+}
+.login input[type="submit"]{
+	border: none;
+	outline: none;
+	height: 40px;
+	background: red;
+	color: white;
+	font-size: 18px;
+	border-radius: 20px;
+}
+.login input[type="submit"]:hover{
+	cursor: pointer;
+	background: yellow;
+	color: #000;
+}
+.login a{
+	text-decoration: none;
+	font-size: 12px;
+	line-height: 20px;
+	color: rosybrown;
+}
+.login a:hover{
+	color: yellow;
+}
+
+.navbar {
+    position: relative;
+}
+
+.navigation1 {
+    margin-left: 270px;
+}
+/* styles.css */
+
+.con {
+    font-size: 20px;
+    color: white;
+}
+
+.sidebar {
+    /* Your sidebar styles */
+    transform: translateX(0);
+    /* Display the sidebar by default */
+    transition: transform 0.3s ease;
+    width: 270px;
+    height: 100vh;
+	position: absolute;
+	margin-top: -125px;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.content {
+    margin-left: 270px;
+    /* Adjust this to match the sidebar width */
+}
+
+.brand {
+    padding: 20px;
+}
+
+.brand h2 {
+    margin: 0;
+    font-size: 24px;
+}
+.nav1{
+	display: flex;
+	flex-direction: row;
+	margin-left: 10px;
+	list-style: none;
+}
+.nav1 li{
+	padding: 10px;
+}
+.nav1 a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    transition: 0.3s;
+}
+.nav1 a:hover {
+    background-color: #555;
+}
+
+.nav {
+    list-style: none;
+    margin-left: 10px;
+    display: block;
+}
+
+.nav li {
+    padding: 10px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    background-color: #555;
+}
+
+.button {
+    width: 270px;
+}
+.table{
+	height: auto;
+	width: 82%;
+	margin-left: 270px;
+}
+.mybutton{
+	margin-left: 270px;
+}
+#studentFormContainer{
+	margin-left: 270px;
+}
+/* Media query for small screens */
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        /* Hide the sidebar on small screens */
+    }
+    .content {
+        margin-left: 0;
+        /* Reset margin for small screens */
+    }
+}

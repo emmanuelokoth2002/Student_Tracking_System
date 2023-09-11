@@ -1,0 +1,50 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+<div class="card text-center">
+    <div class="card-header bg-danger">
+        Contact details
+    </div>
+    <div class="card-body">
+        <form id="data-form">
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault01">Contact ID</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="12" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault02">First name</label>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="emmanuel" required>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Delete contact</button>
+        </form>
+    </div>
+</div>
+
+<div id="message"></div>
+
+<script>
+    $(document).ready(function() {
+        $("#data-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            var contactid = $("#validationDefault01").val();
+            var firstname = $("#validationDefault02").val();
+
+            // Make an AJAX request to delete the data
+            $.ajax({
+                url: "http://localhost:3000/controllers/contactoperation.php", // Replace with your server-side delete script
+                method: "POST",
+                data: {
+                    deletecontact: true,
+                    contactid: contactid
+                },
+                success: function(response) {
+                    $("#message").text(response);
+                }
+            });
+        });
+    });
+</script>

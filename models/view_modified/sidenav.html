@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="sidenav.css">
+
+
+<div class="con">
+    <!-- Toggle button for sidebar -->
+    <div class="button bg-dark">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <i class="bi bi-list"></i>
+        </button>
+    </div>
+
+    <!-- sidenav -->
+    <div class="sidebar bg-dark" id="sidebar">
+        <div class="brand">
+            <h2>Contact Application</h2>
+        </div>
+        <ul class="nav flex-column">
+            <li>
+                <a href="main.php"><i class="bi bi-speedometer2"></i>  Dashboard</a>
+            </li>
+            <li>
+                <a href="contact.php"><i class="bi bi-person-lines-fill"></i> Contacts</a>
+            </li>
+            <li>
+                <a href="category.php"><i class="bi bi-bookmark-fill"></i> Categories</a>
+            </li>
+            <li>
+                <a href="contactcategory.php"><i class="bi bi-bookmark-fill"></i> Contact-Categories</a>
+            </li>
+            <li>
+                <a href="settings.php"><i class=" bi bi-gear "></i>  Settings</a>
+            </li>
+
+            <!-- Other sidebar items -->
+        </ul>
+    </div>
+    <!-- sidenav -->
+
+    <div class="content">
+        <p>Hello my people</p>
+        <!-- Your main content goes here -->
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</div>

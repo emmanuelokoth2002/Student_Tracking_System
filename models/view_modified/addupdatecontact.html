@@ -1,0 +1,77 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div class="card text-center">
+    <div class="card-header bg-danger">
+        Contact details
+    </div>
+    <div class="card-body">
+        <form id="data-form">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Contact ID</label>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="12" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">First name</label>
+                    <input type="text" class="form-control" id="validationDefault02" placeholder="Emmanuel" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault03">Last name</label>
+                    <input type="text" class="form-control" id="validationDefault03" placeholder="Otieno" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault04">Phone number</label>
+                    <input type="text" class="form-control" id="validationDefault04" placeholder="0289...." required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault05">Email</label>
+                    <input type="text" class="form-control" id="validationDefault05" placeholder="..@gmail.com" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault06">Address</label>
+                    <input type="text" class="form-control" id="validationDefault06" placeholder="Nairobi" required>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">add/update contact</button>
+        </form>
+    </div>
+</div>
+
+<div id="message"></div>
+
+<script>
+    $(document).ready(function() {
+        $("#data-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var contactid = $("#validationDefault01").val();
+            var firstname = $("#validationDefault02").val();
+            var lastname = $("#validationDefault03").val();
+            var phonenumber = $("#validationDefault04").val();
+            var email = $("#validationDefault05").val();
+            var address = $("#validationDefault06").val();
+
+            // Make an AJAX request
+            $.ajax({
+                url: "http://localhost:3000/controllers/contactoperation.php", // Replace with your server-side processing script
+                method: "POST",
+                data: {
+                    savecontact: true,
+                    contactid: contactid,
+                    firstname: firstname,
+                    lastname: lastname,
+                    phonenumber: phonenumber,
+                    email: email,
+                    address: address
+                },
+                success: function(response) {
+                    $("#message").text(response);
+                }
+            });
+        });
+    });
+</script>
