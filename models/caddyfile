@@ -1,3 +1,0 @@
-http://54.144.45.151{
-	reverse_proxy localhost:88888888000
-}
