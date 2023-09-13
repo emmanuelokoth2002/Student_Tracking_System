@@ -89,6 +89,43 @@
             </ul>
         </div>
         <!-- sidenav -->
+
+        <div class="container">
+            <button id="toggleParentFormButton" class="btn btn-success">Add/Update Parent</button>
+            <!-- Parent Form (Initially Hidden) -->
+            <div id="addParentForm" style="display: none;">
+                <h2>Add/Update Parent</h2>
+                <form id="parent-form">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="parentid">Parent ID</label>
+                            <input type="text" class="form-control" id="parentid" placeholder="1" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="firstname">First Name</label>
+                            <input type="text" class="form-control" id="parentFirstname" placeholder="John" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" class="form-control" id="parentLastname" placeholder="Doe" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="parentEmail" placeholder="johndoe@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="phonenumber">Phone Number</label>
+                            <input type="text" class="form-control" id="parentPhonenumber" placeholder="123-456-7890" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add Parent</button>
+                </form>
+            </div>
+            </div>
         <h1>List of Parents</h1>
 
         <table class="table">
@@ -101,6 +138,7 @@
                     <th>Phone Number</th>
                     <th>Created At</th>
                     <th>Updated At</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -113,10 +151,87 @@
                     <td>{{ parent.phonenumber }}</td>
                     <td>{{ parent.createdat }}</td>
                     <td>{{ parent.updatedat }}</td>
+                    <td>
+                        <button class="btn btn-danger delete-button" data-studentid="{{ parent.parentid }}">Delete</button>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    <script>
+        const toggleParentFormButton = document.getElementById("toggleParentFormButton");
+        const addParentForm = document.getElementById("addParentForm");
+
+        toggleParentFormButton.addEventListener("click", function() {
+            if (addParentForm.style.display === "none" || addParentForm.style.display === "") {
+                addParentForm.style.display = "block";
+            } else {
+                addParentForm.style.display = "none";
+            }
+        });
+
+        $(document).ready(function() {
+            $("#parent-form").submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                const parentid = $("#parentid").val();
+                const firstname = $("#parentFirstname").val();
+                const lastname = $("#parentLastname").val();
+                const email = $("#parentEmail").val();
+                const phonenumber = $("#parentPhonenumber").val();
+
+                // Create a JSON object with parent data
+                const parentData = {
+                    parentid: parentid,
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: email,
+                    phonenumber: phonenumber
+                };
+
+                // Make an AJAX request to add the parent
+                $.ajax({
+                    url: "/add_parent", // Use the appropriate URL for your Flask route
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(parentData), // Send parent data as JSON
+                    success: function(response) {
+                        // Display a success message, you can update this based on your UI
+                        alert("Parent added successfully");
+                        // Optionally, you can clear the form here
+                        $("#parent-form")[0].reset();
+                    },
+                    error: function(error) {
+                        // Handle errors here, you can display an error message
+                        alert("Error adding parent: " + error.responseText);
+                    }
+                });
+            });
+        });
+
+        $(document).on("click", ".delete-parent-button", function() {
+            var parentid = $(this).data("parentid");
+
+            if (confirm("Are you sure you want to delete this parent?")) {
+                // Make an AJAX request to delete the parent
+                $.ajax({
+                    url: "/delete_parent/" + parentid, // Use the appropriate URL for your Flask route
+                    method: "POST",
+                    success: function(response) {
+                        // Handle success response (e.g., remove the row from the table)
+                        if (response.message) {
+                            $(this).closest("tr").remove(); // Remove the deleted row from the table
+                        } else {
+                            alert("Failed to delete parent.");
+                        }
+                    },
+                    error: function() {
+                        alert("An error occurred while deleting the parent.");
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

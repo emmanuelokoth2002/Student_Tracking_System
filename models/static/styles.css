@@ -79,7 +79,9 @@ h1{
 }
 
 .navigation1 {
-    margin-left: 270px;
+    margin-left: 250px;
+	position: relative;
+	max-width: 110%;
 }
 /* styles.css */
 
@@ -93,8 +95,8 @@ h1{
     transform: translateX(0);
     /* Display the sidebar by default */
     transition: transform 0.3s ease;
-    width: 270px;
-    height: 100vh;
+    width: 250px;
+	min-height: 300%;
 	position: absolute;
 	margin-top: -125px;
 }
@@ -104,7 +106,7 @@ h1{
 }
 
 .content {
-    margin-left: 270px;
+    margin-left: 250px;
     /* Adjust this to match the sidebar width */
 }
 
@@ -157,18 +159,15 @@ h1{
 }
 
 .button {
-    width: 270px;
+    width: 250px;
 }
 .table{
 	height: auto;
-	width: 82%;
-	margin-left: 270px;
+	width: 75%;
+	margin-left: 280px;
 }
-.mybutton{
-	margin-left: 270px;
-}
-#studentFormContainer{
-	margin-left: 270px;
+.container{
+	margin-left: 250px;
 }
 /* Media query for small screens */
 
