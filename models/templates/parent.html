@@ -55,71 +55,70 @@
             </div>
             <ul class="nav flex-column">
                 <li>
-                    <a href="parents.html"><i class="bi bi-person-lines-fill"></i> Parents</a>
+                    <a href="/get_parents?"><i class="bi bi-person-lines-fill"></i> Parents</a>
                 </li>
                 <li>
-                    <a href="parents.html"><i class="bi bi-bookmark-fill"></i> Teachers</a>
+                    <a href="/get_teachers?"><i class="bi bi-bookmark-fill"></i> Teachers</a>
                 </li>
                 <li>
-                    <a href="parents.html"><i class="bi bi-bookmark-fill"></i> students</a>
+                    <a href="/get_students?"><i class="bi bi-bookmark-fill"></i> students</a>
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-bookmark-fill"></i>classes</a>
+                    <a href="/get_classes?"><i class="bi bi-bookmark-fill"></i>classes</a>
                 </li>
                 <li>
-                    <a href="#"><i class=" bi bi-gear "></i>  assignments</a>
+                    <a href="http://127.0.0.1:5000/get_assignments?"><i class=" bi bi-gear "></i>  assignments</a>
                 </li>
                 <li>
-                    <a href="#"><i class=" bi bi-gear "></i>  fees</a>
+                    <a href="http://127.0.0.1:5000/get_fees?"><i class=" bi bi-gear "></i>  fees</a>
                 </li>
                 <li>
-                    <a href="#"><i class=" bi bi-gear "></i>  attendance</a>
+                    <a href="http://127.0.0.1:5000/get_attendance?"><i class=" bi bi-gear "></i>  attendance</a>
                 </li>
                 <li>
-                    <a href="#"><i class=" bi bi-gear "></i>  news</a>
+                    <a href="http://127.0.0.1:5000/get_news?"><i class=" bi bi-gear "></i>  news</a>
                 </li>
                 <li>
-                    <a href="#"><i class=" bi bi-gear "></i>  messages</a>
+                    <a href="/get_messages"><i class=" bi bi-gear "></i>  messages</a>
                 </li>
                 <li>
-                    <a href="#"><i class=" bi bi-gear "></i>  notifications</a>
+                    <a href="/get_notifications"><i class=" bi bi-gear "></i>  notifications</a>
                 </li>
     
                 <!-- Other sidebar items -->
             </ul>
         </div>
         <!-- sidenav -->
-
         <div class="container">
-            <button id="toggleParentFormButton" class="btn btn-success">Add/Update Parent</button>
-            <!-- Parent Form (Initially Hidden) -->
-            <div id="addParentForm" style="display: none;">
+            <button id="toggleFormButton" class="btn btn-success">Add/Update Parent</button>
+            <!-- Student Form (Initially Hidden) -->
+            <div id="addForm" style="display: none;">
                 <h2>Add/Update Parent</h2>
                 <form id="parent-form">
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                            <label for="parentid">Parent ID</label>
+                            <label for="studentid">Parent ID</label>
                             <input type="text" class="form-control" id="parentid" placeholder="1" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="firstname">First Name</label>
-                            <input type="text" class="form-control" id="parentFirstname" placeholder="John" required>
+                            <input type="text" class="form-control" id="firstname" placeholder="Emmanuel" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="lastname">Last Name</label>
-                            <input type="text" class="form-control" id="parentLastname" placeholder="Doe" required>
+                            <input type="text" class="form-control" id="lastname" placeholder="Otieno" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="parentEmail" placeholder="johndoe@example.com" required>
+                            <label for="birthdate">Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="2023-09-13" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                            <label for="phonenumber">Phone Number</label>
-                            <input type="text" class="form-control" id="parentPhonenumber" placeholder="123-456-7890" required>
+                            <label for="classid">Phone number</label>
+                            <input type="text" class="form-control" id="phonenumber" placeholder="0712345678" required>
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Add Parent</button>
@@ -152,7 +151,7 @@
                     <td>{{ parent.createdat }}</td>
                     <td>{{ parent.updatedat }}</td>
                     <td>
-                        <button class="btn btn-danger delete-button" data-studentid="{{ parent.parentid }}">Delete</button>
+                        <button class="btn btn-danger delete-button" data-studentid="{{ parents.parentid }}">Delete</button>
                     </td>
                 </tr>
                 {% endfor %}
@@ -160,14 +159,14 @@
         </table>
     </div>
     <script>
-        const toggleParentFormButton = document.getElementById("toggleParentFormButton");
-        const addParentForm = document.getElementById("addParentForm");
+        const toggleFormButton = document.getElementById("toggleFormButton");
+        const addForm = document.getElementById("addForm");
 
-        toggleParentFormButton.addEventListener("click", function() {
-            if (addParentForm.style.display === "none" || addParentForm.style.display === "") {
-                addParentForm.style.display = "block";
+        toggleFormButton.addEventListener("click", function() {
+            if (addForm.style.display === "none" || addForm.style.display === "") {
+                addForm.style.display = "block";
             } else {
-                addParentForm.style.display = "none";
+                addForm.style.display = "none";
             }
         });
 
@@ -176,12 +175,12 @@
                 event.preventDefault(); // Prevent the default form submission
 
                 const parentid = $("#parentid").val();
-                const firstname = $("#parentFirstname").val();
-                const lastname = $("#parentLastname").val();
-                const email = $("#parentEmail").val();
-                const phonenumber = $("#parentPhonenumber").val();
+                const firstname = $("#firstname").val();
+                const lastname = $("#lastname").val();
+                const email = $("#email").val();
+                const phonenumber = $("#phonenumber").val();
 
-                // Create a JSON object with parent data
+                // Create a JSON object with student data
                 const parentData = {
                     parentid: parentid,
                     firstname: firstname,
@@ -190,12 +189,12 @@
                     phonenumber: phonenumber
                 };
 
-                // Make an AJAX request to add the parent
+                // Make an AJAX request to add the student
                 $.ajax({
-                    url: "/add_parent", // Use the appropriate URL for your Flask route
+                    url: "/add_parent", // Use a relative URL as you're on the same domain
                     method: "POST",
                     contentType: "application/json",
-                    data: JSON.stringify(parentData), // Send parent data as JSON
+                    data: JSON.stringify(parentData), // Send student data as JSON
                     success: function(response) {
                         // Display a success message, you can update this based on your UI
                         alert("Parent added successfully");
@@ -210,28 +209,28 @@
             });
         });
 
-        $(document).on("click", ".delete-parent-button", function() {
-            var parentid = $(this).data("parentid");
+        $(document).on("click", ".delete-button", function() {
+        var parentId = $(this).data("parentid");
 
-            if (confirm("Are you sure you want to delete this parent?")) {
-                // Make an AJAX request to delete the parent
-                $.ajax({
-                    url: "/delete_parent/" + parentid, // Use the appropriate URL for your Flask route
-                    method: "POST",
-                    success: function(response) {
-                        // Handle success response (e.g., remove the row from the table)
-                        if (response.message) {
-                            $(this).closest("tr").remove(); // Remove the deleted row from the table
-                        } else {
-                            alert("Failed to delete parent.");
-                        }
-                    },
-                    error: function() {
-                        alert("An error occurred while deleting the parent.");
+        if (confirm("Are you sure you want to delete this parent")) {
+            // Make an AJAX request to delete the student
+            $.ajax({
+                url: "http://127.0.0.1:5000/delete_parent/" + parentId, // Include the student ID in the URL
+                method: "POST", // Use DELETE method for deletion
+                success: function(response) {
+                    // Handle success response (e.g., remove the row from the table)
+                    if (response.message) {
+                        $(this).closest("tr").remove(); // Remove the deleted row from the table
+                    } else {
+                        alert("Failed to delete parent.");
                     }
-                });
-            }
-        });
+                },
+                error: function() {
+                    alert("An error occurred while deleting the parent.");
+                }
+            });
+        }
+    });
     </script>
 </body>
 </html>

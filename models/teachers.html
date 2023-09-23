@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger navigation1">
-        <a class="navbar-brand" href="#">class Management System</a>
+        <a class="navbar-brand" href="#">teacher Management System</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -53,66 +53,66 @@
             <div class="brand">
                 <h2>Dashboard</h2>
             </div>
-            <ul class="nav flex-column">     
+            <ul class="nav flex-column">
                 <li>
-                    <a href="/get_parents"><i class="bi bi-person-lines-fill"></i>  Parents</a>
+                    <a href="teachers.html"><i class="bi bi-person-lines-fill"></i> teachers</a>
                 </li>
                 <li>
-                    <a href="/get_teachers"><i class="bi bi-bookmark-fill"></i> Teachers</a>
+                    <a href="teachers.html"><i class="bi bi-bookmark-fill"></i> Teachers</a>
                 </li>
                 <li>
-                    <a href="/get_students"><i class="bi bi-bookmark-fill"></i> Students</a>
+                    <a href="teachers.html"><i class="bi bi-bookmark-fill"></i> teachers</a>
                 </li>
                 <li>
-                    <a href="/get_classes"><i class="bi bi-bookmark-fill"></i>classes</a>
+                    <a href="#"><i class="bi bi-bookmark-fill"></i>classes</a>
                 </li>
                 <li>
-                    <a href="/get_assignments"><i class=" bi bi-gear "></i>  assignments</a>
+                    <a href="#"><i class=" bi bi-gear "></i>  assignments</a>
                 </li>
                 <li>
-                    <a href="/get_fees"><i class=" bi bi-gear "></i>  fees</a>
+                    <a href="#"><i class=" bi bi-gear "></i>  fees</a>
                 </li>
                 <li>
-                    <a href="/get_attendance"><i class=" bi bi-gear "></i>  attendance</a>
+                    <a href="#"><i class=" bi bi-gear "></i>  attendance</a>
                 </li>
                 <li>
-                    <a href="/get_news"><i class=" bi bi-gear"></i>  news</a>
+                    <a href="#"><i class=" bi bi-gear "></i>  news</a>
                 </li>
                 <li>
-                    <a href="/get_messages"><i class=" bi bi-gear "></i>  messages</a>
+                    <a href="#"><i class=" bi bi-gear "></i>  messages</a>
                 </li>
                 <li>
-                    <a href="/get_notifications"><i class=" bi bi-gear "></i>  notifications</a>
+                    <a href="#"><i class=" bi bi-gear "></i>  notifications</a>
                 </li>
     
                 <!-- Other sidebar items -->
             </ul>
         </div>
         <!-- sidenav -->
-        <h1>List of classes</h1>
+        <h1>List of teachers</h1>
 
         <table class="table">
             <thead class="bg-warning">
                 <tr>
-                    <th>Class ID</th>
-                    <th>Class Name</th>
                     <th>Teacher ID</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone number</th>
                     <th>Created At</th>
                     <th>Updated At</th>
                 </tr>
             </thead>
             <tbody>
-                {% for class in classes %}
+                {% for teacher in teachers %}
                 <tr class="table-info">
-                    <td>{{ class.classid }}</td>
-                    <td>{{ class.classname }}</td>
-                    <td>{{ class.teacherid }}</td>
-                    <td>{{ class.startdate }}</td>
-                    <td>{{ class.enddate }}</td>
-                    <td>{{ class.createdat }}</td>
-                    <td>{{ class.updatedat }}</td>
+                    <td>{{ teacher.teacherid }}</td>
+                    <td>{{ teacher.firstname }}</td>
+                    <td>{{ teacher.lastname }}</td>
+                    <td>{{ teacher.email }}</td>
+                    <td>{{ teacher.phonenumber }}</td>
+                    <td>{{ teacher.createdat }}</td>
+                    <td>{{ teacher.updatedat }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
